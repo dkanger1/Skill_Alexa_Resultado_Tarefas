@@ -8,7 +8,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Qual tarefa você deseja iniciar?';
+        const speakOutput = 'A Ju está magnífica!';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
