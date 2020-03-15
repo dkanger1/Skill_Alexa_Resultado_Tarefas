@@ -25,7 +25,7 @@ const HelloWorldIntentHandler = {
         var http = require('http');
 
 var options = {
-    host: 'google.com',
+    host: 'dashboard.gpspweb.com.br/pentaho/plugin/OpeninRobot/api/botao_virtual_alexa?userid=ADMIN&password=Inhaus@2019&param_id=44067&param_value=teste%20botao&param_select=fogoALEXA&autosend=1',
     path: '/'
 }
 var request = http.request(options, function (res) {
