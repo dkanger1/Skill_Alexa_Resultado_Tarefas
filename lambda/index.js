@@ -21,7 +21,30 @@ const HelloWorldIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Hello World!';
+        ///////////////aaaaaaaaaaaaaaaaaae
+        var http = require('http');
+
+var options = {
+    host: 'google.com',
+    path: '/'
+}
+var request = http.request(options, function (res) {
+    var data = '';
+    res.on('data', function (chunk) {
+        data += chunk;
+    });
+    res.on('end', function () {
+        console.log(data);
+
+    });
+});
+request.on('error', function (e) {
+    console.log(e.message);
+});
+request.end();
+
+////////////aaaaauuuuuu
+        const speakOutput = 'Iniciando tarefa:';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
