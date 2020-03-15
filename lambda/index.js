@@ -23,7 +23,7 @@ const HelloWorldIntentHandler = {
     handle(handlerInput) {
         ///////////////aaaaaaaaaaaaaaaaaae
         var http = require('http');
-
+ 
 var options = {
     host: 'google.com',
     path: '/'
