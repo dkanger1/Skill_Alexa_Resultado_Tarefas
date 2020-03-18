@@ -23,9 +23,6 @@ const HelloWorldIntentHandler = {
     handle(handlerInput) {
 
 
-var open =require("open");
-   
-   open('http://dashboard.gpspweb.com.br/pentaho/plugin/OpeninRobot/api/botao_virtual_alexa?userid=ADMIN&password=Inhaus@2019&param_id=44067&param_value=teste%20botao&param_select=fogo1&autosend=1');
 
         const speakOutput = 'Iniciando tarefa:';
         return handlerInput.responseBuilder
