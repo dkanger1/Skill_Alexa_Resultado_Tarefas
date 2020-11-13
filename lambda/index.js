@@ -120,4 +120,5 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addErrorHandlers(
         ErrorHandler,
     )
+    .withApiClient(new Alexa.DefaultApiClient())
     .lambda();
