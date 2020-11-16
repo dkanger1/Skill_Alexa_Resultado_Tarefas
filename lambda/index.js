@@ -1,6 +1,32 @@
 // This sample demonstrates handling intents from an Alexa skill using the Alexa Skills Kit SDK (v2).
 // Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
 // session persistence, api calls, and more.
+function getWebData(url) {
+  return new Promise((resolve, reject) => {
+    const https = require("http");
+    https.get(url, (res) => {
+      if (res.statusCode !== 'OK') {
+        reject(new Error(`http status ${res.statusCode.toString()}`));
+      }
+ 
+      res.setEncoding("utf8");
+      let body = "";
+      res.on("data", (chunk) => { body += chunk; });
+      res.on("end", () => {
+        try {
+          resolve(body);
+        } catch (e) {
+          console.error(e.message);
+          reject(e);
+        }
+      });
+    }).on("error", (e) => {
+      console.error(`https.get error: ${e.message}`);
+      reject(e);
+    }).end();
+  });
+}
+
 const Alexa = require('ask-sdk-core');
 
 const LaunchRequestHandler = {
@@ -23,7 +49,9 @@ const ListaTarefasIntentHandler = {
     handle(handlerInput) {
 
 
-
+const body = await getWebData("https://www.example.com").catch((e) => {
+    console.log(`Error: ${e}`);
+});
         const speakOutput = 'Buscando Tarefas:';
         return handlerInput.responseBuilder
             .speak(speakOutput)
