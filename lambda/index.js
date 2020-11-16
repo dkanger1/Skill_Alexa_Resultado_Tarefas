@@ -49,7 +49,7 @@ const ListaTarefasIntentHandler = {
     handle(handlerInput) {
 
 
-const body =  getWebData("https://www.example.com").catch((e) => {
+const body =  getWebData("http://www.example.com").catch((e) => {
     console.log(`Error: ${e}`);
 });
         const speakOutput = body;
