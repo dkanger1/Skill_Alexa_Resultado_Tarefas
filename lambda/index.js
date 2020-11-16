@@ -42,17 +42,16 @@ const LaunchRequestHandler = {
     }
 };
 const ListaTarefasIntentHandler = {
-    canHandle(handlerInput) {
+    canHandle(handlerInput) 
+    {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Tarefas';
     },
     handle(handlerInput) {
 
+const data =  getWebData("https://www.example.com");
 
-const body =  getWebData("http://www.example.com").catch((e) => {
-    console.log(`Error: ${e}`);
-});
-        const speakOutput = body;
+        const speakOutput = data;
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
