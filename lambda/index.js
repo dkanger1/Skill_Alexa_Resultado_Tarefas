@@ -52,7 +52,7 @@ const ListaTarefasIntentHandler = {
 const body = await getWebData("https://www.example.com").catch((e) => {
     console.log(`Error: ${e}`);
 });
-        const speakOutput = 'Buscando Tarefas:';
+        const speakOutput = body;
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
