@@ -51,7 +51,7 @@ const ListaTarefasIntentHandler = {
 
 const data =  await getWebData("https://refindustry.com/index1.php");
 
-        const speakOutput = data;
+        const speakOutput = 'data';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
