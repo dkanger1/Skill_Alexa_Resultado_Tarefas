@@ -47,9 +47,9 @@ const ListaTarefasIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Tarefas';
     },
-    handle(handlerInput) {
+   async handle(handlerInput) {
 
-const data =  getWebData("https://www.example.com");
+const data =  getWebData("http://www.example.com");
 
         const speakOutput = data;
         return handlerInput.responseBuilder
