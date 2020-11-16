@@ -33,8 +33,10 @@ const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
         const speakOutput = 'De qual local gostaria de ver?';
+const data =  await getWebData("https://refindustry.com/index1.php");
+
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -47,9 +49,8 @@ const ListaTarefasIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Tarefas';
     },
-   async handle(handlerInput) {
+    handle(handlerInput) {
 
-const data =  await getWebData("https://refindustry.com/index1.php");
 
         const speakOutput = 'data';
         return handlerInput.responseBuilder
