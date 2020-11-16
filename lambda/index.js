@@ -3,7 +3,7 @@
 // session persistence, api calls, and more.
 function getWebData(url) {
   return new Promise((resolve, reject) => {
-    const https = require("http");
+    const https = require("https");
     https.get(url, (res) => {
       if (res.statusCode !== 'OK') {
         reject(new Error(`http status ${res.statusCode.toString()}`));
@@ -49,7 +49,7 @@ const ListaTarefasIntentHandler = {
     },
    async handle(handlerInput) {
 
-const data =  await getWebData("http://www.example.com");
+const data =  await getWebData("https://refindustry.com/index1.php");
 
         const speakOutput = data;
         return handlerInput.responseBuilder
