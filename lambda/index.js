@@ -49,7 +49,7 @@ const ListaTarefasIntentHandler = {
     },
    async handle(handlerInput) {
 
-const data =  getWebData("http://www.example.com");
+const data =  await getWebData("http://www.example.com");
 
         const speakOutput = data;
         return handlerInput.responseBuilder
