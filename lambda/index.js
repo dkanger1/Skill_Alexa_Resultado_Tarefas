@@ -14,7 +14,7 @@ const GetRemoteDataHandler = {
 
     await getRemoteData('http://177.55.114.52/dash/teste_conexao_sql.php?local=963')
       .then((response) => {
-        const data = 0;
+        const data = 'number:5';
         outputSpeech = `Estão sendo executadas ${data.number} no local. `;
  //       for (let i = 0; i < data.people.length; i += 1) {
      //     if (i === 0) {
