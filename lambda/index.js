@@ -12,7 +12,7 @@ const GetRemoteDataHandler = {
   async handle(handlerInput) {
     let outputSpeech = 'This is the default message.';
 
-    await getRemoteData('http://dashboard.gpspweb.com.br/pentaho/plugin/OpeninRobot/api/botao_virtual_alexa?userid=ADMIN&password=Inhaus@2019&param_id=44067')
+    await getRemoteData('http://177.55.114.52/dash/teste_conexao_sql.php?local=963')
       .then((response) => {
         const data = JSON.parse(response);
         outputSpeech = `Estão sendo executadas ${data.number} no local. `;
