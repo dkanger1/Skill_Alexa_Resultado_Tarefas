@@ -12,23 +12,6 @@ const GetRemoteDataHandler = {
   async handle(handlerInput) {
     let outputSpeech = 'This is the default message.';
 
-    await getRemoteData('http://177.55.114.52/dash/teste_conexao_sql.php?local=963')
-      .then((response) => {
-        const data = 'number:5';
-        outputSpeech = `Estão sendo executadas ${data.number} no local. `;
- //       for (let i = 0; i < data.people.length; i += 1) {
-     //     if (i === 0) {
-            // first record
-      //      outputSpeech = `${outputSpeech}Their names are: ${data.people[i].name}, `;
-     //     }
-     //   }
-      })
-      .catch((err) => {
-        console.log(`ERROR: ${err.message}`);
-        // set an optional error message here
-        // outputSpeech = err.message;
-      });
-
     return handlerInput.responseBuilder
       .speak(outputSpeech)
       .getResponse();
