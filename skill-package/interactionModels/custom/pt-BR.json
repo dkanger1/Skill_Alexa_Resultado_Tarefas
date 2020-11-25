@@ -1,0 +1,111 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "demo skill",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "LocalIntent",
+          "slots": [
+            {
+              "name": "Locais",
+              "type": "local"
+            }
+          ],
+          "samples": [
+            "Tarefas do local {Locais}",
+            "procurar tarefas no local {Locais}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "id": "3125",
+              "name": {
+                "value": "GRU"
+              }
+            },
+            {
+              "id": "1402",
+              "name": {
+                "value": "APERAM"
+              }
+            },
+            {
+              "id": "963",
+              "name": {
+                "value": "Basf"
+              }
+            },
+            {
+              "id": "961",
+              "name": {
+                "value": "Brian"
+              }
+            }
+          ],
+          "name": "local"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "LocalIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "Locais",
+              "type": "local",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.11229565558.784531259914"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Confirm.Intent.207875994208",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Gostaria de ver as tarefas do local {local} ?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.11229565558.784531259914",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Em qual local ?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "9"
+}
