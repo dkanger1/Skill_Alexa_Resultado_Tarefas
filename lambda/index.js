@@ -10,7 +10,7 @@ const GetRemoteDataHandler = {
       && handlerInput.requestEnvelope.request.intent.name === 'GetRemoteDataIntent');
   },
   async handle(handlerInput) {
-    let outputSpeech = 'This is the default message.';
+    let outputSpeech = 'Teste respondendo';
 
     return handlerInput.responseBuilder
       .speak(outputSpeech)
