@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "demo skill",
+      "invocationName": "new create skill",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
