@@ -13,19 +13,18 @@ const LaunchRequestHandler = {
             .getResponse();
     }
 };
-const DescIntentHandler = {
+const ConsultaAndamentoIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'DescIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaAndamentoIntent';
     },
     async handle(handlerInput) {
       let outputSpeech = 'This is the default message.';
   
-      await getRemoteData('http://177.55.114.52/iot/alexa_tarefa_longa.php')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_execucao.php?tipo=AND&local=961')
         .then((response) => {
           const data = JSON.parse(response);
-        //  outputSpeech = `A tarefa mais longa da semana foi ${data.tarefa}, foi executada por ${data.nome}, ela durou ${data.tempo} minutos. `;
-       outputSpeech = `Foi o recebimento do veículo E D P 8204 na doca 6, durou uma hora e quarenta minutos, deseja abrir uma tarefa para tratar este desvio?`;
+     outputSpeech = ` ${data.prazo} tarefas estão no prazo e ${data.atrazo} atrasadas. `;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);

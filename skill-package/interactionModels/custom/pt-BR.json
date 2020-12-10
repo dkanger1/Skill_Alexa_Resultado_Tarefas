@@ -1,43 +1,53 @@
 {
   "interactionModel": {
-    "languageModel": {
-      "invocationName": "demo skill",
-      "intents": [
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.NavigateHomeIntent",
-          "samples": []
-        },
-        {
-          "name": "DescIntent",
-          "slots": [],
-          "samples": [
-            "descrição",
-            "tarefa mais longa"
-          ]
-        },
-        {
-          "name": "ConsultaPendentesIntent",
-          "slots": [],
-          "samples": [
-            "pendentes",
-            "tarefas pendentes"
-          ]
-        }
-      ],
-      "types": []
-    }
-  },
-  "version": "12"
+      "languageModel": {
+          "invocationName": "demo skill",
+          "intents": [
+              {
+                  "name": "AMAZON.CancelIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.HelpIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.StopIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.NavigateHomeIntent",
+                  "samples": []
+              },
+              {
+                  "name": "ConsultaAndamentoIntent",
+                  "slots": [],
+                  "samples": [
+                      "andamento",
+                      "tarefas em andamento"
+                  ]
+              },
+              {
+                  "name": "ConsultaPendentesIntent",
+                  "slots": [],
+                  "samples": [
+                      "tarefas pendentes",
+                      "pendentes"
+                  ]
+              },
+              {
+                  "name": "ConsultaFinalizadasIntent",
+                  "slots": [],
+                  "samples": [
+                      "tarefas terminadas",
+                      "tarefas acabadas",
+                      "tarefas finalizadas",
+                      "terminadas",
+                      "Finalizadas"
+                  ]
+              }
+          ],
+          "types": []
+      }
+  }
 }
