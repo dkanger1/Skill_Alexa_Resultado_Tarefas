@@ -51,7 +51,7 @@ const ConsultaPendentesIntentHandler = {
       await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=PEN&local=961')
         .then((response) => {
           const data = JSON.parse(response);
-         outputSpeech = `Existem ${data[0].esc} tarefas escalonadas, ${data[0].ven} vencidas, ${data[0].ale} em alerta e ${data[0].abe} `;
+         outputSpeech = `Existem ${data[0].esc} tarefas escalonadas, ${data[0].ven} vencidas, ${data[0].ale} em alerta e ${data[0].abe} abertas`;
        //outputSpeech = `Foi o recebimento do veículo E D P 8204 na doca 6, durou uma hora e quarenta minutos, deseja abrir uma tarefa para tratar este desvio?`;
     })
         .catch((err) => {
@@ -62,6 +62,35 @@ const ConsultaPendentesIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
+        .reprompt(speakOutput)
+        .getResponse();
+    },
+  };
+
+  
+const ConsultaConcluídasIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaConcluídasIntent';
+    },
+    async handle(handlerInput) {
+      let outputSpeech = 'This is the default message.';
+  
+      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=FIN&local=961')
+        .then((response) => {
+          const data = JSON.parse(response);
+         outputSpeech = `Foram executadas  ${data[0].prazo} tarefas no prazo e ${data[0].atrasada} atrasadas`;
+       //outputSpeech = `Foi o recebimento do veículo E D P 8204 na doca 6, durou uma hora e quarenta minutos, deseja abrir uma tarefa para tratar este desvio?`;
+    })
+        .catch((err) => {
+          console.log(`ERROR: ${err.message}`);
+          // set an optional error message here
+          // outputSpeech = err.message;
+        });
+  
+      return handlerInput.responseBuilder
+        .speak(outputSpeech)
+        .reprompt(speakOutput)
         .getResponse();
     },
   };
