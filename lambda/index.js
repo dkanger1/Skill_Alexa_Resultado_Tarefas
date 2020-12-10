@@ -157,7 +157,7 @@ const getRemoteData = (url) => new Promise((resolve, reject) => {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        DescIntentHandler,
+        ConsultaAndamentoIntentHandler,
         ConsultaPendentesIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
