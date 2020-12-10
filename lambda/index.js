@@ -21,7 +21,7 @@ const ConsultaAndamentoIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = 'This is the default message.';
   
-      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_execucao.php?tipo=AND&local=961')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=AND&local=961')
         .then((response) => {
           const data = JSON.parse(response);
      outputSpeech = ` ${data.prazo} tarefas estão no prazo e ${data.atrazo} atrasadas. `;
