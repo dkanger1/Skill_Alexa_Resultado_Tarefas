@@ -24,7 +24,7 @@ const ConsultaAndamentoIntentHandler = {
       await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=AND&local=961')
         .then((response) => {
           const data = JSON.parse(response);
-     outputSpeech = ` ${data.prazo} tarefas estão no prazo e ${data.atrazo} atrasadas. `;
+     outputSpeech = ` ${data[0].prazo} tarefas estão no prazo e ${data[0].atrazo} atrasadas. `;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
