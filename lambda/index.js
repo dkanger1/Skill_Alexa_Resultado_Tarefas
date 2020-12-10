@@ -62,7 +62,7 @@ const ConsultaPendentesIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
-        .reprompt(speakOutput)
+        .reprompt('speakOutput')
         .getResponse();
     },
   };
@@ -90,7 +90,7 @@ const ConsultaFinalizadasIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
-        .reprompt(speakOutput)
+        .reprompt(outputSpeech)
         .getResponse();
     },
   };
