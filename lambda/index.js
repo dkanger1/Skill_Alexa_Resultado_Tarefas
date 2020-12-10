@@ -51,7 +51,7 @@ const ConsultaPendentesIntentHandler = {
       await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=PEN&local=961')
         .then((response) => {
           const data = JSON.parse(response);
-         outputSpeech = `A tarefa ${data.esc}, escalonadas ${data.ven}, vencidas ${data.ale} em alerta. `;
+         outputSpeech = `Existem ${data[0].esc} tarefas escalonadas, ${data[0].ven} vencidas, ${data[0].ale} em alerta e ${data[0].abe} `;
        //outputSpeech = `Foi o recebimento do veículo E D P 8204 na doca 6, durou uma hora e quarenta minutos, deseja abrir uma tarefa para tratar este desvio?`;
     })
         .catch((err) => {
