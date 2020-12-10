@@ -68,10 +68,10 @@ const ConsultaPendentesIntentHandler = {
   };
 
   
-const ConsultaConcluídasIntentHandler = {
+const ConsultaFinalizadasIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaConcluídasIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaFinalizadasIntent';
     },
     async handle(handlerInput) {
       let outputSpeech = 'This is the default message.';
@@ -188,6 +188,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         LaunchRequestHandler,
         ConsultaAndamentoIntentHandler,
         ConsultaPendentesIntentHandler,
+        ConsultaFinalizadasIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
