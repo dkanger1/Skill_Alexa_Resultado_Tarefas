@@ -18,51 +18,27 @@ const DescIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'DescIntent';
     },
-    handle(handlerInput) {
-        let data = new Date();
-    let date_ob = new Date(data.valueOf() - 180 * 60000);
-  //  let  date_ob = '2020-12-09T16:15:00.000Z'       
-        const speakOutput = "Tarefa criada";
-var fs = require('fs');
-
-var options = {
-    'method': 'POST',
-    'hostname': '34.214.174.95',
-    'port': 22222,
-    'path': '/GPSPPRODAPI/api/task/get?Token=SGR4A5L6C7I8S9I10N-HAUS',
-    'headers': {
-      'Content-Type': 'application/json'
+    async handle(handlerInput) {
+      let outputSpeech = 'This is the default message.';
+  
+      await getRemoteData('http://177.55.114.52/iot/alexa_tarefa_longa.php')
+        .then((response) => {
+          const data = JSON.parse(response);
+        //  outputSpeech = `A tarefa mais longa da semana foi ${data.tarefa}, foi executada por ${data.nome}, ela durou ${data.tempo} minutos. `;
+       outputSpeech = `Foi o recebimento do veículo E D P 8204 na doca 6, durou uma hora e quarenta minutos, deseja abrir uma tarefa para tratar este desvio?`;
+    })
+        .catch((err) => {
+          console.log(`ERROR: ${err.message}`);
+          // set an optional error message here
+          // outputSpeech = err.message;
+        });
+  
+      return handlerInput.responseBuilder
+        .speak(outputSpeech)
+        .getResponse();
     },
-    'maxRedirects': 20
   };
-  
-  var req = http.request(options, function (res) {
-    var chunks = [];
-  
-    res.on("data", function (chunk) {
-      chunks.push(chunk);
-    });
-  
-    res.on("end", function (chunk) {
-      var body = Buffer.concat(chunks);
-      console.log(body.toString());
-    });
-  
-    res.on("error", function (error) {
-      console.error(error);
-    });
-  });
 
-  var postData = JSON.stringify({"id":0,"title":"Tratar demora no recebimento","single":true,"technicalSpecifications":null,"endDateTime":  date_ob,"company":{"id":1541},"startDateTime":  date_ob,"businessRole":[{"id":573}],"minimumExperience":{"id":3},"description":"teste alexa","attachment":false,"evidence":false,"duration":1,"stagger":60,"actions":{"id":0,"emails":[],"idNextTask":0},"listCheckList":[{"id":0,"question":"alexa funcionou","answers":"sim:nao","order":1,"variables":null,"kindOfQuestion":{"id":1}}],"recurrence":null,"allowsMultipleTasks":true,"redoTaskCanceled":true,"signature":true,"qrCode":false,"beginRecurrence":0,"autoLink":false});
-  req.write(postData);
-  
-  req.end();
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
-    }
-};
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
