@@ -6,7 +6,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Deseja criar uma nova atividade?';
+        const speakOutput = 'Olá Brian, gostaria de consultar as atividades em andamento, pendentes ou finalizadas?';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -48,10 +48,10 @@ const ConsultaPendentesIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = 'This is the default message.';
   
-      await getRemoteData('http://177.55.114.52/iot/alexa_tarefa_longa.php')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=PEN&local=961')
         .then((response) => {
           const data = JSON.parse(response);
-         outputSpeech = `A tarefa mais longa da semana foi ${data.tarefa}, foi executada por ${data.nome}, ela durou ${data.tempo} minutos. `;
+         outputSpeech = `A tarefa ${data.esc}, escalonadas ${data.ven}, vencidas ${data.ale} em alerta. `;
        //outputSpeech = `Foi o recebimento do veículo E D P 8204 na doca 6, durou uma hora e quarenta minutos, deseja abrir uma tarefa para tratar este desvio?`;
     })
         .catch((err) => {
