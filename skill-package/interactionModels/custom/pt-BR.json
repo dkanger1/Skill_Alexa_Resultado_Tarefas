@@ -23,8 +23,16 @@
           "name": "DescIntent",
           "slots": [],
           "samples": [
-            "Descrição",
-            "tarefas"
+            "descrição",
+            "tarefa mais longa"
+          ]
+        },
+        {
+          "name": "ConsultaPendentesIntent",
+          "slots": [],
+          "samples": [
+            "pendentes",
+            "tarefas pendentes"
           ]
         }
       ],

@@ -39,6 +39,33 @@ const DescIntentHandler = {
     },
   };
 
+  
+const ConsultaPendentesIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaPendentesIntent';
+    },
+    async handle(handlerInput) {
+      let outputSpeech = 'This is the default message.';
+  
+      await getRemoteData('http://177.55.114.52/iot/alexa_tarefa_longa.php')
+        .then((response) => {
+          const data = JSON.parse(response);
+         outputSpeech = `A tarefa mais longa da semana foi ${data.tarefa}, foi executada por ${data.nome}, ela durou ${data.tempo} minutos. `;
+       //outputSpeech = `Foi o recebimento do veículo E D P 8204 na doca 6, durou uma hora e quarenta minutos, deseja abrir uma tarefa para tratar este desvio?`;
+    })
+        .catch((err) => {
+          console.log(`ERROR: ${err.message}`);
+          // set an optional error message here
+          // outputSpeech = err.message;
+        });
+  
+      return handlerInput.responseBuilder
+        .speak(outputSpeech)
+        .getResponse();
+    },
+  };
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -131,6 +158,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         DescIntentHandler,
+        ConsultaPendentesIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
