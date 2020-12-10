@@ -35,6 +35,7 @@ const DescIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
+        .reprompt('add a reprompt if you want to keep the session open for the user to respond')
         .getResponse();
     },
   };
