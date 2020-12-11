@@ -77,8 +77,10 @@ const ConsultaFinalizadasIntentHandler = {
       const param_time = handlerInput.requestEnvelope.request.intent.slots.param_tempo.resolutions.resolutionsPerAuthority[0].values[0].value.id;
         await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=FIN&local=961&time=') + param_time
         .then((response) => {
-          const data = JSON.parse(response);
-         outputSpeech = `Foram executadas  ${data[0].prazo} tarefas no prazo e ${data[0].atrasada} atrasadas`;
+            outputSpeech = param_time;
+            //  const data = JSON.parse(response);
+        // outputSpeech = `Foram executadas  ${data[0].prazo} tarefas no prazo e ${data[0].atrasada} atrasadas`;
+  
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
