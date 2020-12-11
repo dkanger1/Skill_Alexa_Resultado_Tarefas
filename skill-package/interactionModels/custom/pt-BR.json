@@ -43,9 +43,19 @@
                       "tarefas acabadas",
                       "tarefas finalizadas",
                       "terminadas",
-                      "finalizadas"
+                      "finalizadas",
+                      "concluídas"
                   ]
-              }
+              },
+              {
+                "name": "ConsultaEscalonadasIntent",
+                "slots": [],
+                "samples": [
+                    "tarefas escalonadas",
+                    "escalonadas",
+                    "escalonamento"
+                ]
+            }
           ],
           "types": []
       }

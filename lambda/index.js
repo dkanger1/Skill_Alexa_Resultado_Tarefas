@@ -103,10 +103,10 @@ const ConsultaFinalizadasIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = 'This is the default message.';
   
-      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=FIN&local=961')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_escalonamento.php')
         .then((response) => {
           const data = JSON.parse(response);
-         outputSpeech = `Foram executadas  ${data[0].prazo} tarefas no prazo e ${data[0].atrasada} atrasadas`;
+         outputSpeech = `Na hierarquia de  ${data[0].responsavel} possui ${data[0].number} tarefas escalonadas`;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
@@ -214,6 +214,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         ConsultaAndamentoIntentHandler,
         ConsultaPendentesIntentHandler,
         ConsultaFinalizadasIntentHandler,
+        ConsultaEscalonamentoIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
