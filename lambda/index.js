@@ -59,7 +59,7 @@ const ConsultaPendentesIntentHandler = {
           // outputSpeech = err.message;
         });
   
-      return handlerInput.responseBuilder
+      return handlerIn-put.responseBuilder
         .speak(outputSpeech)
         .reprompt('speakOutput')
         .getResponse();
@@ -74,11 +74,11 @@ const ConsultaFinalizadasIntentHandler = {
     },
     async handle(handlerInput) {
       const intentName = handlerInput.requestEnvelope.request.intent.slots.param_time.resolutions.resolutionsPerAuthority[0].values[0].value.id; 
-      const outputSpeech =  `Você está procurando  ${intentName}`;
+      let outputSpeech =  `Você está procurando  ${intentName}`;
       await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=FIN&local=961&time=' + intentName) 
         .then((response) => {
           const data = JSON.parse(response);
-     outputSpeech = ` ${data[0].prazo} tarefas estão no prazo e ${data[0].atrazada} atrasadas. `;
+     outputSpeech = `Foram executadas ${data[0].prazo} tarefas estão no prazo e ${data[0].atrazada} atrasadas. `;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
