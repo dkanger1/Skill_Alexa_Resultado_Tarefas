@@ -6,7 +6,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Olá Rafael, gostaria de consultar as atividades em andamento, pendentes ou finalizadas?';
+        const speakOutput = 'Olá Rafael, gostaria de consultar as atividades em andamento. pendentes. finalizadas. ou o dash de escalonadas?';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -146,7 +146,7 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = 'Goodbye!';
+        const speakOutput = 'Até logo!';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .getResponse();
@@ -172,7 +172,7 @@ const IntentReflectorHandler = {
     },
     handle(handlerInput) {
         const intentName = Alexa.getIntentName(handlerInput.requestEnvelope);
-        const speakOutput = `You just triggered ${intentName}`;
+        const speakOutput = `Você ativou o  ${intentName}`;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
