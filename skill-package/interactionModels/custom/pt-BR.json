@@ -1,7 +1,7 @@
 {
   "interactionModel": {
       "languageModel": {
-          "invocationName": "demo skill",
+          "invocationName": "consulta de tarefas",
           "intents": [
               {
                   "name": "AMAZON.CancelIntent",

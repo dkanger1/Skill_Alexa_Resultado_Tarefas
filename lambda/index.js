@@ -95,6 +95,31 @@ const ConsultaFinalizadasIntentHandler = {
     },
   };
 
+  const ConsultaEscalonamentoIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaEscalonamentoIntent';
+    },
+    async handle(handlerInput) {
+      let outputSpeech = 'This is the default message.';
+  
+      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=FIN&local=961')
+        .then((response) => {
+          const data = JSON.parse(response);
+         outputSpeech = `Foram executadas  ${data[0].prazo} tarefas no prazo e ${data[0].atrasada} atrasadas`;
+    })
+        .catch((err) => {
+          console.log(`ERROR: ${err.message}`);
+          // set an optional error message here
+          // outputSpeech = err.message;
+        });
+  
+      return handlerInput.responseBuilder
+        .speak(outputSpeech)
+        .reprompt(outputSpeech)
+        .getResponse();
+    },
+  };
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
