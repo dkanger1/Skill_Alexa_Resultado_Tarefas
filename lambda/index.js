@@ -106,8 +106,14 @@ const ConsultaFinalizadasIntentHandler = {
       await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_escalonamento.php')
         .then((response) => {
           const data = JSON.parse(response);
-         outputSpeech = `Na hierarquia de  ${data[0].responsavel} possui ${data[0].number} tarefas escalonadas`;
-    })
+         // $const = ${data.length};
+         // for(i=0; i> data.number ;i++)
+          //{
+            outputSpeech = `Na hierarquia de  ${data.length} possui ${data}.length tarefas escalonadas`;
+          //  outputSpeech = `Na hierarquia de  ${data[0].responsavel} possui ${data[0].number} tarefas escalonadas`;
+          //}
+
+        })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
           // set an optional error message here
