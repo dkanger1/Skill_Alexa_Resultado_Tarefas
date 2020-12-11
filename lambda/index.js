@@ -101,7 +101,7 @@ const ConsultaFinalizadasIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaEscalonamentoIntent';
     },
     async handle(handlerInput) {
-      let outputSpeech = 'This is the default message.';
+      let outputSpeech = 'No nivel diretoria executiva';
   
       await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_escalonamento.php')
         .then((response) => {
@@ -109,7 +109,7 @@ const ConsultaFinalizadasIntentHandler = {
          // $const = ${data.length};
             for(i=0; i> data.length ;i++)
           {
-           outputSpeech = outputSpeech + `Na hierarquia de  ${data[i].responsavel} possui ${data[i].number} tarefas escalonadas`;
+           outputSpeech =  outputSpeech.concat(`Na hierarquia de  ${data[i].responsavel} possui ${data[i].number} tarefas escalonadas`);
           }
 
         })
