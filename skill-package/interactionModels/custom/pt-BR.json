@@ -37,8 +37,18 @@
               },
               {
                   "name": "ConsultaFinalizadasIntent",
-                  "slots": [],
+                  "slots": [
+                      {
+                          "name": "param_time",
+                          "type": "param_tempo",
+                          "samples": [
+                              "Última {param_time}",
+                              "{param_time}"
+                          ]
+                      }
+                  ],
                   "samples": [
+                      "terminadas {param_time}",
                       "tarefas terminadas",
                       "tarefas acabadas",
                       "tarefas finalizadas",
@@ -48,16 +58,91 @@
                   ]
               },
               {
-                "name": "ConsultaEscalonamentoIntent",
-                "slots": [],
-                "samples": [
-                    "tarefas escalonadas",
-                    "escalonadas",
-                    "escalonamento"
-                ]
-            }
+                  "name": "ConsultaEscalonamentoIntent",
+                  "slots": [],
+                  "samples": [
+                      "tarefas escalonadas",
+                      "escalonadas",
+                      "escalonamento"
+                  ]
+              }
           ],
-          "types": []
-      }
+          "types": [
+              {
+                  "name": "param_tempo",
+                  "values": [
+                      {
+                          "id": "720",
+                          "name": {
+                              "value": "trinta dias",
+                              "synonyms": [
+                                  "mes",
+                                  "mês"
+                              ]
+                          }
+                      },
+                      {
+                          "id": "168",
+                          "name": {
+                              "value": "sete dias"
+                          }
+                      },
+                      {
+                          "id": "24",
+                          "name": {
+                              "value": "um dia"
+                          }
+                      },
+                      {
+                          "id": "8",
+                          "name": {
+                              "value": "oito horas"
+                          }
+                      },
+                      {
+                          "id": "1",
+                          "name": {
+                              "value": "uma hora",
+                              "synonyms": [
+                                  "última hora"
+                              ]
+                          }
+                      }
+                  ]
+              }
+          ]
+      },
+      "dialog": {
+          "intents": [
+              {
+                  "name": "ConsultaFinalizadasIntent",
+                  "confirmationRequired": false,
+                  "prompts": {},
+                  "slots": [
+                      {
+                          "name": "param_time",
+                          "type": "param_tempo",
+                          "confirmationRequired": false,
+                          "elicitationRequired": true,
+                          "prompts": {
+                              "elicitation": "Elicit.Slot.1595884341077.220299781335"
+                          }
+                      }
+                  ]
+              }
+          ],
+          "delegationStrategy": "ALWAYS"
+      },
+      "prompts": [
+          {
+              "id": "Elicit.Slot.1595884341077.220299781335",
+              "variations": [
+                  {
+                      "type": "PlainText",
+                      "value": "De qual período?"
+                  }
+              ]
+          }
+      ]
   }
 }

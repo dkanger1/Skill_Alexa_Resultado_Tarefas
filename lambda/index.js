@@ -74,8 +74,8 @@ const ConsultaFinalizadasIntentHandler = {
     },
     async handle(handlerInput) {
       let outputSpeech = 'This is the default message.';
-  
-      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=FIN&local=961')
+      const intentName = handlerInput.requestEnvelope.request.intent.slots.location.resolutions.resolutionsPerAuthority[0].values[0].value.id;     //  const speakOutput = `Você está procurando  ${intentName}`;
+      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=FIN&local=961&time=') + intentName
         .then((response) => {
           const data = JSON.parse(response);
          outputSpeech = `Foram executadas  ${data[0].prazo} tarefas no prazo e ${data[0].atrasada} atrasadas`;
