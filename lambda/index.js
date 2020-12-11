@@ -6,7 +6,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Olá Rafael, gostaria de consultar as atividades em andamento. pendentes. finalizadas. ou o dash de escalonadas?';
+        const speakOutput = 'Olá Ráfael, gostaria de consultar as atividades em andamento. pendentes. finalizadas. ou o dash de escalonadas?';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -52,7 +52,6 @@ const ConsultaPendentesIntentHandler = {
         .then((response) => {
           const data = JSON.parse(response);
          outputSpeech = `Existem ${data[0].esc} tarefas escalonadas, ${data[0].ven} vencidas, ${data[0].ale} em alerta e ${data[0].abe} abertas`;
-       //outputSpeech = `Foi o recebimento do veículo E D P 8204 na doca 6, durou uma hora e quarenta minutos, deseja abrir uma tarefa para tratar este desvio?`;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
@@ -80,7 +79,6 @@ const ConsultaFinalizadasIntentHandler = {
         .then((response) => {
           const data = JSON.parse(response);
          outputSpeech = `Foram executadas  ${data[0].prazo} tarefas no prazo e ${data[0].atrasada} atrasadas`;
-       //outputSpeech = `Foi o recebimento do veículo E D P 8204 na doca 6, durou uma hora e quarenta minutos, deseja abrir uma tarefa para tratar este desvio?`;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
@@ -131,7 +129,7 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Você pode saber a quantidade de tarefas em andamento dizendo ANDAMENTO, as atividades pendentes dizendo Pendente ou as concluídas dizendo finalizadas';
+        const speakOutput = 'Você pode saber a quantidade de tarefas em andamento dizendo ANDAMENTO, as atividades pendentes dizendo Pendente. as concluídas dizendo finalizadas. Ou consultar o dashboard de escalonamento dizendo Escalonadas';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
