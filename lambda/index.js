@@ -73,13 +73,12 @@ const ConsultaFinalizadasIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaFinalizadasIntent';
     },
     async handle(handlerInput) {
-      let outputSpeech = handlerInput.requestEnvelope.request.intent;
-     // const param_time = handlerInput.requestEnvelope.request.intent.slots.param_tempo.resolutions.resolutionsPerAuthority[0].values[0].value.id;
-        await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=FIN&local=961&time=') //+ param_time
+      const intentName = handlerInput.requestEnvelope.request.intent.slots.param_time.resolutions.resolutionsPerAuthority[0].values[0].value.id; 
+      const outputSpeech =  `Você está procurando  ${intentName}`;
+      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=FIN&local=961&time=' + intentName) 
         .then((response) => {
-            //  const data = JSON.parse(response);
-        // outputSpeech = `Foram executadas  ${data[0].prazo} tarefas no prazo e ${data[0].atrasada} atrasadas`;
-  
+          const data = JSON.parse(response);
+     outputSpeech = ` ${data[0].prazo} tarefas estão no prazo e ${data[0].atrazo} atrasadas. `;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
@@ -89,11 +88,12 @@ const ConsultaFinalizadasIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
-        .reprompt(outputSpeech)
+        .reprompt('add a reprompt if you want to keep the session open for the user to respond')
         .getResponse();
     },
   };
 
+  
   const ConsultaEscalonamentoIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'

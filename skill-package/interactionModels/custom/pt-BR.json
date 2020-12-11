@@ -40,9 +40,8 @@
                   "slots": [
                       {
                           "name": "param_time",
-                          "type": "param_tempo",
+                          "type": "param_time",
                           "samples": [
-                              "Última {param_time}",
                               "{param_time}"
                           ]
                       }
@@ -69,7 +68,7 @@
           ],
           "types": [
               {
-                  "name": "param_tempo",
+                  "name": "param_time",
                   "values": [
                       {
                           "id": "720",
@@ -121,11 +120,11 @@
                   "slots": [
                       {
                           "name": "param_time",
-                          "type": "param_tempo",
+                          "type": "param_time",
                           "confirmationRequired": false,
                           "elicitationRequired": true,
                           "prompts": {
-                              "elicitation": "Elicit.Slot.1595884341077.220299781335"
+                              "elicitation": "Elicit.Slot.1438283316307.1118593023780"
                           }
                       }
                   ]
@@ -135,11 +134,11 @@
       },
       "prompts": [
           {
-              "id": "Elicit.Slot.1595884341077.220299781335",
+              "id": "Elicit.Slot.1438283316307.1118593023780",
               "variations": [
                   {
                       "type": "PlainText",
-                      "value": "De qual período?"
+                      "value": "Das últimas "
                   }
               ]
           }
