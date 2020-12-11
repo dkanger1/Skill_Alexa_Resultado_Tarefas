@@ -6,7 +6,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Olá Brian, gostaria de consultar as atividades em andamento, pendentes ou finalizadas?';
+        const speakOutput = 'Olá Rafael, gostaria de consultar as atividades em andamento, pendentes ou finalizadas?';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
