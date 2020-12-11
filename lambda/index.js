@@ -107,11 +107,10 @@ const ConsultaFinalizadasIntentHandler = {
         .then((response) => {
           const data = JSON.parse(response);
          // $const = ${data.length};
-         // for(i=0; i> data.number ;i++)
-          //{
-            outputSpeech = `Na hierarquia de  ${data.length} possui ${data}.length tarefas escalonadas`;
-          //  outputSpeech = `Na hierarquia de  ${data[0].responsavel} possui ${data[0].number} tarefas escalonadas`;
-          //}
+            for(i=0; i> data.length ;i++)
+          {
+           outputSpeech = outputSpeech + `Na hierarquia de  ${data[i].responsavel} possui ${data[i].number} tarefas escalonadas`;
+          }
 
         })
         .catch((err) => {
