@@ -73,7 +73,7 @@ const ConsultaFinalizadasIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaFinalizadasIntent';
     },
     async handle(handlerInput) {
-      let outputSpeech = handlerInput.requestEnvelope.request.intent.slots.param_tempo.resolutions;
+      let outputSpeech = handlerInput.requestEnvelope.request.intent;
      // const param_time = handlerInput.requestEnvelope.request.intent.slots.param_tempo.resolutions.resolutionsPerAuthority[0].values[0].value.id;
         await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=FIN&local=961&time=') //+ param_time
         .then((response) => {
