@@ -101,7 +101,7 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'As suass opções estão sendo definidas?';
+        const speakOutput = 'Você pode saber a quantidade de tarefas em andamento dizendo ANDAMENTO, as atividades pendentes dizendo Pendente ou as concluídas dizendo finalizadas';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
