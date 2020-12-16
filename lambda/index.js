@@ -106,7 +106,7 @@ const ConsultaFinalizadasIntentHandler = {
         .then((response) => {
           const data = JSON.parse(response);
          // $const = ${data.length};
-            for(i=0; i< data.length ;i++)
+            for(var i=0; i< data.length ; i++)
           {
            outputSpeech =  outputSpeech.concat(` Na hierarquia de  ${data[i].responsavel} possui ${data[i].number} tarefas escalonadas. `);
           }
