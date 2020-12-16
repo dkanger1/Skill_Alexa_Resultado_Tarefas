@@ -59,7 +59,7 @@ const ConsultaPendentesIntentHandler = {
           // outputSpeech = err.message;
         });
   
-      return handlerIn-put.responseBuilder
+      return handlerInput.responseBuilder
         .speak(outputSpeech)
         .reprompt('speakOutput')
         .getResponse();
