@@ -21,7 +21,7 @@ const ConsultaAndamentoIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = 'This is the default message.';
   
-      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=AND&local=961')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/alexa_tarefas_pendentes.php?tipo=AND&local=961')
         .then((response) => {
           const data = JSON.parse(response);
      outputSpeech = ` ${data[0].prazo} tarefas estão no prazo e ${data[0].atrazo} atrasadas. `;
@@ -48,7 +48,7 @@ const ConsultaPendentesIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = 'This is the default message.';
   
-      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=PEN&local=961')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/alexa_tarefas_pendentes.php?tipo=PEN&local=961')
         .then((response) => {
           const data = JSON.parse(response);
          outputSpeech = `Existem ${data[0].esc} tarefas escalonadas, ${data[0].ven} vencidas, ${data[0].ale} em alerta e ${data[0].abe} abertas`;
@@ -75,7 +75,7 @@ const ConsultaFinalizadasIntentHandler = {
     async handle(handlerInput) {
       const intentName = handlerInput.requestEnvelope.request.intent.slots.param_time.resolutions.resolutionsPerAuthority[0].values[0].value.id; 
       let outputSpeech =  `Você está procurando  ${intentName}`;
-      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_tarefas_pendentes.php?tipo=FIN&local=961&time=' + intentName) 
+      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/alexa_tarefas_pendentes.php?tipo=FIN&local=961&time=' + intentName) 
         .then((response) => {
           const data = JSON.parse(response);
      outputSpeech = `Foram executadas ${data[0].prazo} tarefas estão no prazo e ${data[0].atrasada} atrasadas. `;
@@ -102,7 +102,7 @@ const ConsultaFinalizadasIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = 'No nível diretoria executiva. ';
   
-      await getRemoteData('http://177.55.114.52/dash/Alexa/alexa_escalonamento.php')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/alexa_escalonamento.php')
         .then((response) => {
           const data = JSON.parse(response);
          // $const = ${data.length};
