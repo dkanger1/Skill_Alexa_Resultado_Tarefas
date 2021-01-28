@@ -34,7 +34,7 @@ const ConsultaAndamentoIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
-        .reprompt('add a reprompt if you want to keep the session open for the user to respond')
+        .reprompt('')
         .getResponse();
     },
   };
@@ -88,7 +88,7 @@ const ConsultaFinalizadasIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
-        .reprompt('add a reprompt if you want to keep the session open for the user to respond')
+        .reprompt('')
         .getResponse();
     },
   };
@@ -188,7 +188,7 @@ const ConsultaFinalizadasIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaProjecaoDiaIntent';
     },
     async handle(handlerInput) {
-      let outputSpeech = 'errou';
+      let outputSpeech = 'houve falha na conexão';
   
       await getRemoteData('http://177.55.114.52/dash/Alexa/macro/projecao_dia.php')
         .then((response) => {
