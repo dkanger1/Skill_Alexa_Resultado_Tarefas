@@ -127,7 +127,7 @@ const ConsultaFinalizadasIntentHandler = {
   const ConsultaProjecaoLDIntentHandler  = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaProjecao48Intent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaProjecaoLDIntent';
     },
     async handle(handlerInput) {
       let outputSpeech = 'erro.';
@@ -309,7 +309,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         ConsultaEscalonamentoIntentHandler,
         ConsultaProjecaoMesIntentHandler,
         ConsultaProjecaoDiaIntentHandler,
-        ConsultaProjecao48IntentHandler,
+        ConsultaProjecaoLDIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
