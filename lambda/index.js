@@ -132,7 +132,7 @@ const ConsultaFinalizadasIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = 'erro.';
   
-      await getRemoteData('http://177.55.114.52/dash/Alexa/projecao.php')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/projecao.php')
         .then((response) => {
           const data = JSON.parse(response);
      outputSpeech = `Nas últimas 24 horas foram executadas ${data[0].l24} tarefas e nas 24 horas que antecederam  ${data[0].l48}.
@@ -159,7 +159,7 @@ const ConsultaFinalizadasIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = '';
   
-      await getRemoteData('http://177.55.114.52/dash/Alexa/projecao_mes.php')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/projecao_mes.php')
         .then((response) => {
           const data = JSON.parse(response);
          // $const = ${data.length};
@@ -190,7 +190,7 @@ const ConsultaFinalizadasIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = 'errou';
   
-      await getRemoteData('http://177.55.114.52/dash/Alexa/projecao_dia.php')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/projecao_dia.php')
         .then((response) => {
           const data = JSON.parse(response);
          // $const = ${data.length};
