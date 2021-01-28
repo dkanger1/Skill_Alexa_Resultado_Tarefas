@@ -124,7 +124,7 @@ const ConsultaFinalizadasIntentHandler = {
         .getResponse();
     },
   };
-  const ConsultaProjecao48IntentHandler  = {
+  const ConsultaProjecaoLDIntentHandler  = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaProjecao48Intent';
