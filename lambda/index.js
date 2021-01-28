@@ -124,6 +124,94 @@ const ConsultaFinalizadasIntentHandler = {
         .getResponse();
     },
   };
+  const ConsultaProjecao48IntentHandler  = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaProjecao48Intent';
+    },
+    async handle(handlerInput) {
+      let outputSpeech = 'erro.';
+  
+      await getRemoteData('http://177.55.114.52/dash/Alexa/projecao.php')
+        .then((response) => {
+          const data = JSON.parse(response);
+     outputSpeech = `Nas últimas 24 horas foram executadas ${data[0].l24} tarefas e nas 24 horas que antecederam  ${data[0].l48}.
+     `;
+    })
+        .catch((err) => {
+          console.log(`ERROR: ${err.message}`);
+          // set an optional error message here
+          // outputSpeech = err.message;
+        });
+  
+      return handlerInput.responseBuilder
+        .speak(outputSpeech)
+        .reprompt('Posso ajudar em algo mais?')
+        .getResponse();
+    },
+  };
+
+  const ConsultaProjecaoMesIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaProjecaoMesIntent';
+    },
+    async handle(handlerInput) {
+      let outputSpeech = '';
+  
+      await getRemoteData('http://177.55.114.52/dash/Alexa/projecao_mes.php')
+        .then((response) => {
+          const data = JSON.parse(response);
+         // $const = ${data.length};
+          var val = ((data[0].CM  * 100/ data[0].LMCD) -100).toFixed(0) ;
+           outputSpeech =  outputSpeech.concat(`No mês atual foram realizadas  ${data[0].CM} tarefas, no mesmo período do mês passado foram feitas  ${data[0].LMCD}. Em comparação com o mês passado o desempenho foi de aproximadamente ${val} porcento`);
+          
+
+        })
+        .catch((err) => {
+          console.log(`ERROR: ${err.message}`);
+          // set an optional error message here
+          // outputSpeech = err.message;
+        });
+  
+      return handlerInput.responseBuilder
+        .speak(outputSpeech)
+        .reprompt('Posso ajuda-lo em mais alguma coisa?')
+        .getResponse();
+    },
+  };
+  
+
+  const ConsultaProjecaoDiaIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaProjecaoDiaIntent';
+    },
+    async handle(handlerInput) {
+      let outputSpeech = 'errou';
+  
+      await getRemoteData('http://177.55.114.52/dash/Alexa/projecao_dia.php')
+        .then((response) => {
+          const data = JSON.parse(response);
+         // $const = ${data.length};
+          
+           outputSpeech =  outputSpeech.concat(`No dia anterior foram realizadas  ${data[0].qtd} tarefas,  hoje, até o momento ${data[1].qtd}, e estão planejadas para serem realizadas hoje mais ${data[2].qtd} tarefas.`);
+          
+
+        })
+        .catch((err) => {
+          console.log(`ERROR: ${err.message}`);
+          // set an optional error message here
+          // outputSpeech = err.message;
+        });
+  
+      return handlerInput.responseBuilder
+        .speak(outputSpeech)
+        .reprompt()
+        .getResponse();
+    },
+  };
+  
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -219,6 +307,9 @@ exports.handler = Alexa.SkillBuilders.custom()
         ConsultaPendentesIntentHandler,
         ConsultaFinalizadasIntentHandler,
         ConsultaEscalonamentoIntentHandler,
+        ConsultaProjecaoMesIntentHandler,
+        ConsultaProjecaoDiaIntentHandler,
+        ConsultaProjecao48IntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
