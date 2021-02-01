@@ -21,10 +21,10 @@ const ConsultaAndamentoIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = 'This is the default message.';
   
-      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/alexa_tarefas_pendentes.php?tipo=AND&local=961')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_pen')
         .then((response) => {
           const data = JSON.parse(response);
-     outputSpeech = ` ${data[0].prazo} tarefas estão no prazo e ${data[0].atrazo} atrasadas. `;
+     outputSpeech = ` ${data.Prazo} tarefas estão no prazo e ${data.Atrasada} atrasadas. `;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
@@ -48,10 +48,10 @@ const ConsultaPendentesIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = 'This is the default message.';
   
-      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/alexa_tarefas_pendentes.php?tipo=PEN&local=961')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_pen')
         .then((response) => {
           const data = JSON.parse(response);
-         outputSpeech = `Existem ${data[0].esc} tarefas escalonadas, ${data[0].ven} vencidas, ${data[0].ale} em alerta e ${data[0].abe} abertas`;
+         outputSpeech = `Existem ${data.Escalonada} tarefas escalonadas, ${data.Vencida} vencidas, ${data.Alerta} em alerta e ${data.Aberta} abertas`;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
