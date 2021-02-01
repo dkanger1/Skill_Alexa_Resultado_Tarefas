@@ -24,7 +24,8 @@ const ConsultaAndamentoIntentHandler = {
       await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_and.php')
         .then((response) => {
           const data = JSON.parse(response);
-     outputSpeech = ` ${data[0].prazo} tarefas estão no prazo e ${data[0].atrasada} atrasadas. `;
+   //  outputSpeech = ` ${data[0].prazo} tarefas estão no prazo e ${data[0].atrasada} atrasadas. `;
+     outputSpeech = ` ${data[0]} `;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
