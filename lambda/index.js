@@ -120,7 +120,7 @@ const ConsultaFinalizadasIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
-        .reprompt(outputSpeech)
+        .reprompt('')
         .getResponse();
     },
   };
@@ -277,7 +277,7 @@ const ErrorHandler = {
     },
     handle(handlerInput, error) {
         console.log(`~~~~ Error handled: ${error.stack}`);
-        const speakOutput = `Sorry, I had trouble doing what you asked. Please try again.`;
+        const speakOutput = `Desculpe, houve um erro na conexão, tente novamente.`;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
