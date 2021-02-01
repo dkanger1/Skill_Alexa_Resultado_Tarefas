@@ -24,7 +24,7 @@ const ConsultaAndamentoIntentHandler = {
       await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_pen')
         .then((response) => {
           const data = JSON.parse(response);
-     outputSpeech = ` ${data.Prazo} tarefas estão no prazo e ${data.Atrasada} atrasadas. `;
+     outputSpeech = ` ${data[0].Prazo} tarefas estão no prazo e ${data[0].Atrasada} atrasadas. `;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
@@ -51,7 +51,7 @@ const ConsultaPendentesIntentHandler = {
       await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_pen')
         .then((response) => {
           const data = JSON.parse(response);
-         outputSpeech = `Existem ${data.Escalonada} tarefas escalonadas, ${data.Vencida} vencidas, ${data.Alerta} em alerta e ${data.Aberta} abertas`;
+         outputSpeech = `Existem ${data[0].Escalonada} tarefas escalonadas, ${data[0].Vencida} vencidas, ${data[0].Alerta} em alerta e ${data[0].Aberta} abertas`;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
