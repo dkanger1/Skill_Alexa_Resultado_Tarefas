@@ -19,7 +19,7 @@ const ConsultaAndamentoIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaAndamentoIntent';
     },
     async handle(handlerInput) {
-      let outputSpeech = 'This is the default message.';
+      let outputSpeech = 'Houve falha na conexão.';
   
       await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_and.php')
         .then((response) => {
@@ -46,7 +46,7 @@ const ConsultaPendentesIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaPendentesIntent';
     },
     async handle(handlerInput) {
-      let outputSpeech = 'This is the default message.';
+      let outputSpeech = 'Houve falha na conexão.';
   
       await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_pen.php')
         .then((response) => {
@@ -74,8 +74,8 @@ const ConsultaFinalizadasIntentHandler = {
     },
     async handle(handlerInput) {
       const intentName = handlerInput.requestEnvelope.request.intent.slots.param_time.resolutions.resolutionsPerAuthority[0].values[0].value.id; 
-      let outputSpeech =  `Você está procurando  ${intentName}`;
-      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_fin.php?local=961&time=' + intentName) 
+      let outputSpeech =  `Houve falha na conexão`;
+      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_fin.php?time=' + intentName) 
         .then((response) => {
           const data = JSON.parse(response);
      outputSpeech = `Foram executadas ${data[0].prazo} tarefas estão no prazo e ${data[0].atrasadas} atrasadas. `;
