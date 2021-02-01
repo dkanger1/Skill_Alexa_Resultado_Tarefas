@@ -21,7 +21,7 @@ const ConsultaAndamentoIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = 'This is the default message.';
   
-      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_pen')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_and.php')
         .then((response) => {
           const data = JSON.parse(response);
      outputSpeech = ` ${data[0].prazo} tarefas estão no prazo e ${data[0].atrasada} atrasadas. `;
@@ -48,7 +48,7 @@ const ConsultaPendentesIntentHandler = {
     async handle(handlerInput) {
       let outputSpeech = 'This is the default message.';
   
-      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_pen')
+      await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_pen.php')
         .then((response) => {
           const data = JSON.parse(response);
          outputSpeech = `Existem ${data[0].escalonada} tarefas escalonadas, ${data[0].vencida} vencidas, ${data[0].alerta} em alerta e ${data[0].aberta} abertas`;
