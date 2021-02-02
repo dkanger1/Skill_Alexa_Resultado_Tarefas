@@ -34,7 +34,7 @@ const ConsultaAndamentoIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
-        .reprompt('')
+        .reprompt('Posso ajudar em mais alguma coisa?')
         .getResponse();
     },
   };
@@ -61,7 +61,7 @@ const ConsultaPendentesIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
-        .reprompt('speakOutput')
+        .reprompt('Posso ajudar em mais alguma coisa?')
         .getResponse();
     },
   };
@@ -88,7 +88,7 @@ const ConsultaFinalizadasIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
-        .reprompt('')
+        .reprompt('Posso ajudar em mais alguma coisa?')
         .getResponse();
     },
   };
@@ -120,7 +120,7 @@ const ConsultaFinalizadasIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
-        .reprompt('')
+        .reprompt('Posso ajudar em mais alguma coisa?')
         .getResponse();
     },
   };
@@ -207,7 +207,7 @@ const ConsultaFinalizadasIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
-        .reprompt()
+        .reprompt('Posso ajudar em mais alguma coisa?')
         .getResponse();
     },
   };
@@ -222,7 +222,7 @@ const HelpIntentHandler = {
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt(speakOutput)
+             .reprompt('O que deseja saber?')
             .getResponse();
     }
 };
