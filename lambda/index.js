@@ -195,7 +195,7 @@ const ConsultaFinalizadasIntentHandler = {
           const data = JSON.parse(response);
          // $const = ${data.length};
           
-           outputSpeech =  outputSpeech.concat(`No dia anterior foram realizadas  ${data[0].qtd} tarefas,  hoje, até o momento ${data[1].qtd}, e estão planejadas para serem realizadas hoje mais ${data[2].qtd} tarefas.`);
+           outputSpeech =  outputSpeech.concat(`No dia anterior foram realizadas  ${data[0].LD} tarefas,  hoje, até o momento ${data[1].LDCT}, e estão planejadas para serem realizadas hoje mais ${data[2].CD} tarefas.`);
           
 
         })
