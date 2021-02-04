@@ -6,7 +6,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Olá Ráfael, gostaria de consultar as atividades em andamento. pendentes. finalizadas. ou o dash de escalonadas?';
+        const speakOutput = 'Olá Brian, gostaria de consultar as atividades em andamento. pendentes. finalizadas. ou o dash de escalonadas?';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -24,7 +24,7 @@ const ConsultaAndamentoIntentHandler = {
       await getRemoteData('http://177.55.114.52/dash/Alexa/macro/tarefas_macro_and.php')
         .then((response) => {
           const data = JSON.parse(response);
-     outputSpeech = ` ${data[0].prazo} tarefas estão no prazo e ${data[0].atrasada} atrasadas. `;
+     outputSpeech = ` ${data[0].prazo} tarefas no prazo e ${data[0].atrasada} atrasadas. `;
     })
         .catch((err) => {
           console.log(`ERROR: ${err.message}`);
