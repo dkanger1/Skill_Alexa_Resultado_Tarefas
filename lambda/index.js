@@ -6,7 +6,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Olá Brian, gostaria de consultar as atividades em andamento. pendentes. finalizadas. ou o dash de escalonadas?';
+        const speakOutput = 'Olá Brian, gostaria de consultar as atividades em andamento. pendentes. finalizadas. a projeção do dia e do mês ou o dash de escalonadas?';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -218,7 +218,7 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Você pode saber a quantidade de tarefas em andamento dizendo ANDAMENTO, as atividades pendentes dizendo Pendente. as concluídas dizendo finalizadas. Ou consultar o dashboard de escalonamento dizendo Escalonadas';
+        const speakOutput = 'Você pode saber a quantidade de tarefas em andamento dizendo ANDAMENTO, as atividades pendentes dizendo Pendente. as concluídas dizendo finalizadas. A projeção do dia, a projeção do mês Ou consultar o dashboard de escalonamento dizendo Escalonadas';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
