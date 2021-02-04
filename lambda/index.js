@@ -164,7 +164,7 @@ const ConsultaFinalizadasIntentHandler = {
           const data = JSON.parse(response);
          // $const = ${data.length};
           var val = ((data[0].CM  * 100/ data[0].LMCD) -100).toFixed(0) ;
-           outputSpeech =  outputSpeech.concat(`No mês atual foram realizadas  ${data[0].CM} tarefas, no mesmo período do mês passado foram feitas  ${data[0].LMCD}. Em comparação com o mês passado o desempenho foi de aproximadamente ${val} porcento`);
+           outputSpeech = `No mês atual foram realizadas ${data[0].CM} tarefas, no mesmo período do mês passado foram feitas  ${data[0].LMCD}. Em comparação com o mês passado o desempenho foi de aproximadamente ${val} porcento`;
           
 
         })
@@ -176,7 +176,7 @@ const ConsultaFinalizadasIntentHandler = {
   
       return handlerInput.responseBuilder
         .speak(outputSpeech)
-        .reprompt('Posso ajuda-lo em mais alguma coisa?')
+        .reprompt('Posso ajudar em mais alguma coisa?')
         .getResponse();
     },
   };
@@ -195,7 +195,7 @@ const ConsultaFinalizadasIntentHandler = {
           const data = JSON.parse(response);
          // $const = ${data.length};
           
-           outputSpeech =  outputSpeech.concat(`No dia anterior foram realizadas  ${data[0].LD} tarefas,  hoje, até o momento ${data[1].LDCT}, e estão planejadas para serem realizadas hoje mais ${data[2].CD} tarefas.`);
+           outputSpeech =  outputSpeech.concat(`No dia anterior foram realizadas  ${data[0].LD} tarefas,  hoje, até o momento ${data[0].LDCT}, e estão planejadas para serem realizadas hoje mais ${data[0].CD} tarefas.`);
           
 
         })
