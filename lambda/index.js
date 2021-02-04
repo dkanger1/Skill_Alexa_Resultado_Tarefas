@@ -130,7 +130,7 @@ const ConsultaFinalizadasIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaProjecaoLDIntent';
     },
     async handle(handlerInput) {
-      let outputSpeech = 'erro.';
+      let outputSpeech = 'A conexãoo falhou.';
   
       await getRemoteData('http://177.55.114.52/dash/Alexa/macro/projecao.php')
         .then((response) => {
@@ -157,7 +157,7 @@ const ConsultaFinalizadasIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultaProjecaoMesIntent';
     },
     async handle(handlerInput) {
-      let outputSpeech = '';
+      let outputSpeech = 'A conexãoo falhou';
   
       await getRemoteData('http://177.55.114.52/dash/Alexa/macro/projecao_mes.php')
         .then((response) => {
